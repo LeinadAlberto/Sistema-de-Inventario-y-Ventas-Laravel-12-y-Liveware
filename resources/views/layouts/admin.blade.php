@@ -1,4 +1,5 @@
 @props([
+    'title' => config('app.name', 'Laravel'),
     'breadcrumbs' => []
 ])
 
@@ -9,7 +10,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>{{ $title }}</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -17,8 +18,12 @@
         
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         
+        
+        {{-- wireui --}}
+        <wireui:scripts />
+        
         @vite(['resources/css/app.css', 'resources/js/app.js'])
-
+        
         <!-- Styles -->
         @livewireStyles
     </head>
@@ -31,13 +36,20 @@
 
         <div class="p-4 sm:ml-64">
             
-            <div class="mt-14">
+            <div class="flex items-center mt-14">
 
                 @include('layouts.includes.admin.breadcrumb')
+
+                @isset($action)
+                    <div class="ml-auto">
+                        {{ $action }}
+                    </div>
+                @endisset 
                     
             </div>
             
             {{ $slot }}
+            
         </div>
 
         @stack('modals')

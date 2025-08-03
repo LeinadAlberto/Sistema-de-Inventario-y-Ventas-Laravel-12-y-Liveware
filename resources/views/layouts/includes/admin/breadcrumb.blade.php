@@ -3,6 +3,7 @@
     <nav class="mb-4">
 
         <ol class="flex flex-wrap">
+            
             @foreach ($breadcrumbs as $item)
             
                 <li class="text-sm leading-normal text-slate-700 {{ !$loop->first ? "pl-2 before:float-left before:pr-2 before:content-['/']" : '' }}">
