@@ -12,9 +12,4 @@ title="Dashboard | LokyWevDev"
     ]
 ]">
 
-    <x-slot name="action">
-        Hola Mundo
-    </x-slot>
-    Hola desde el Admin
-
 </x-admin-layout>
